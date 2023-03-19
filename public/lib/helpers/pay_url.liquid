@@ -1,0 +1,4 @@
+{% liquid
+  assign url = '/payments/example_gateway?transaction_id=' | append: transaction.id
+  return url
+%}

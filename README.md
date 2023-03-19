@@ -1,14 +1,11 @@
-# Module name
+# Payments Example Gateway
 
-Module description
+Module implements fake payment gateway. It does not process any money. It should we used for testing purpose. You can simulate success or failed payment.
+Name of the gateway: `example_gateway`
 
 ## Usage
 
-How to use the module
-
-## Hooks
-
-List of hooks provided and/or implemented by the module
+After you install module you can use `payments` module with `example` gateway type.
 
 ## Examples
 
