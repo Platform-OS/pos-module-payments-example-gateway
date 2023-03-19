@@ -2,8 +2,11 @@
 layout: null
 ---
 {% liquid
-  function transaction = 'lib/queries/transactions/find', id: context.params.transaction_id
-  include 'lib/present_or_404', property: transaction.id
+  function transaction = 'modules/payments/queries/transactions/find', id: context.params.transaction_id
+  if transaction == blank
+    response_status 404
+    break
+  endif
 %}
 <html dir="{{direction}}" lang="{{context.language}}">
   <head>
@@ -20,12 +23,12 @@ layout: null
         <div class="mb-10">
           <h1 class="text-xl font-bold text-center uppercase">Example Payments</h1>
         </div>
-        <form action="/example_payment_gateway/webhook" method="POST">
+        <form action="/payments/example_gateway/webhook" method="POST">
           <input name="transaction_id" value="{{ transaction.id }}" type="hidden">
           <div class="mb-10">
             <button class="block w-full max-w-xs px-3 py-3 mx-auto font-semibold bg-indigo-500 rounded-lg hover:bg-indigo-700 focus:bg-indigo-700 text-content-inverted" name="payment_status" value="success">
               PAY NOW
-              {% render  'theme/simple/price', amount_cents: transaction.amount, currency: transaction.currency %}
+              {% render  'theme/simple/price', amount_cents: transaction.amount_cents, currency: transaction.currency %}
             </button>
           </div>
           <div>
@@ -37,7 +40,7 @@ layout: null
             <button class="block w-full max-w-xs px-3 py-3 mx-auto font-semibold bg-indigo-500 rounded-lg hover:bg-indigo-700 focus:bg-indigo-700 text-content-inverted" name="payment_status" value="success_delayed">
               PAY NOW <small>delay status change for 15s</small>
               <br />
-              {% render  'theme/simple/price', amount_cents: transaction.amount, currency: transaction.currency %}
+              {% render  'theme/simple/price', amount_cents: transaction.amount_cents, currency: transaction.currency %}
             </button>
           </div>
         </form>

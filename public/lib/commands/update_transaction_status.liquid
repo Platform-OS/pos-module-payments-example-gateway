@@ -1,9 +1,9 @@
 {% liquid
-  function gateway_request  = 'lib/commands/gateway_requests/receive', object: object, gateway: 'example', external_id: object['transaction_id'], api_call_name: 'example_update_transaction_status'
-  function object = 'lib/commands/example_gateway/update_transaction_status/map_response', gateway_request: gateway_request
-  function transaction = 'lib/queries/transactions/find', id: object['transaction_id']
+  function gateway_request  = 'modules/payments/commands/gateway_requests/receive', object: object, gateway: 'example', external_id: object['transaction_id'], api_call_name: 'example_update_transaction_status'
+  function object = 'modules/payments_example_gateway/commands/update_transaction_status/map_response', gateway_request: gateway_request
+  function transaction = 'modules/payments/queries/transactions/find', id: object['transaction_id']
   if transaction
-    function object = 'lib/commands/transactions/update_status', object: object, transaction: transaction
+    function object = 'modules/payments/commands/transactions/update_status', object: object, transaction: transaction
     hash_assign object['transaction'] = transaction
   endif
 
