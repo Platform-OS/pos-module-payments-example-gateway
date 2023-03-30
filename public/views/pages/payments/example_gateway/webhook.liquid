@@ -9,9 +9,10 @@ method: post
     function object = 'modules/payments_example_gateway/commands/update_transaction_status', object: context.params
   endif
   if object.valid
-    assign url = '/' | append: return_url | append: '?id=' | append: context.params.transaction_id
-    include 'redirect_to', url: url
+    redirect_to context.params.success_url
   else
     log object, type: 'ERROR: payments_example_gateway webhook'
+
+    redirect_to context.params.failed_url
   endif
 %}

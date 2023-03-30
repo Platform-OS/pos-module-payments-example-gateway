@@ -25,6 +25,8 @@ layout: null
         </div>
         <form action="/payments/example_gateway/webhook" method="POST">
           <input name="transaction_id" value="{{ transaction.id }}" type="hidden">
+          <input type="hidden" name="success_url" value="{{context.params.success_url}}">
+          <input type="hidden" name="failed_url" value="{{context.params.failed_url}}">
           <div class="mb-10">
             <button class="block w-full max-w-xs px-3 py-3 mx-auto font-semibold bg-indigo-500 rounded-lg hover:bg-indigo-700 focus:bg-indigo-700 text-content-inverted" name="payment_status" value="success">
               PAY NOW
