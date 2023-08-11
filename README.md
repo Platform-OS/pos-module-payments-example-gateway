@@ -5,7 +5,7 @@ Name of the gateway: `example_gateway`
 
 ## Installation
 
-        git submodule add --name core git@github.com:Platform-OS/pos-module-payments-example-gateway.git modules/payments-example-gateway
+        git submodule add --name core git@github.com:Platform-OS/pos-module-payments-example-gateway.git modules/payments_example_gateway
 
 ## Usage
 
