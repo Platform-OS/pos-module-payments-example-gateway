@@ -5,7 +5,7 @@ Name of the gateway: `example_gateway`
 
 ## Installation
 
-        git clone git@github.com:Platform-OS/pos-module-payments-example-gateway.git modules/payments_example_gateway
+        git submodule add --name core git@github.com:Platform-OS/pos-module-payments-example-gateway.git modules/payments-example-gateway
 
 ## Usage
 
@@ -23,7 +23,7 @@ EXAMPLE GATEWAY
     assign object = null | hash_merge: gateway: 'example_gateway', payable_ids: ids, amount_cents: 1001, currency: 'USD'
     function object = 'modules/payments/commands/transactions/create', object: object
     log object, type: 'object'
-    assign gateway_params = null | hash_merge: success_url: '/success', failed_url: '/failed'
+    assign gateway_params = null | hash_merge: success_url: '/success', cancel_url: '/failed'
     function url = 'modules/payments/helpers/pay_url', transaction: object, gateway_params: gateway_params
     log url, type: 'url'
     redirect_to url, status: 303
