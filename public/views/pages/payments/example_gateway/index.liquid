@@ -9,7 +9,7 @@ layout: null
   endif
 %}
 <!DOCTYPE html>
-<html dir="{{direction}}" lang="{{context.language}}">
+<html dir="{{ direction }}" lang="{{ context.language }}">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -74,8 +74,8 @@ layout: null
       class="payment-buttons"
     >
       <input name="transaction_id" value="{{ transaction.id }}" type="hidden">
-      <input type="hidden" name="success_url" value="{{context.params.success_url}}">
-      <input type="hidden" name="failed_url" value="{{context.params.failed_url}}">
+      <input type="hidden" name="success_url" value="{{ context.params.success_url }}">
+      <input type="hidden" name="failed_url" value="{{ context.params.failed_url }}">
       <button class="payment-button success-button"
         name="payment_status" value="success">
         Payment Success
