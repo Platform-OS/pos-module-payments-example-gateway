@@ -5,7 +5,7 @@
 
     hash_assign object['transaction_id'] = request_data['transaction_id']
     if request_data['payment_status'] == 'success'
-      hash_assign object['payment_status'] = 'success'
+      hash_assign object['payment_status'] = 'succeeded'
     else
       hash_assign object['payment_status'] = 'failed'
     endif
