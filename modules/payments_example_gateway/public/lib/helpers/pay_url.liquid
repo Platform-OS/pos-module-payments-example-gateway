@@ -1,6 +1,9 @@
 {% liquid
-  assign template = '/payments/example_gateway{?transaction_id,success_url,failed_url}'
-  assign url = template | expand_url_template: transaction_id: transaction.id, success_url: gateway_params.success_url, failed_url: gateway_params.failed_url
-
-  return url
+  function object = 'modules/payments_example_gateway/helpers/pay_object', gateway_params: gateway_params, transaction: transaction
+  if object.valid
+    return object.url
+  else
+    log object, type: 'ERROR: payments_example pay_url'
+    return null
+  endif
 %}
