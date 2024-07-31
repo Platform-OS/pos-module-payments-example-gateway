@@ -8,11 +8,9 @@ method: post
   else
     function object = 'modules/payments_example_gateway/commands/update_transaction_status', object: context.params
   endif
-  if object.valid
+  if object.valid and object.payment_status == 'succeeded'
     redirect_to context.params.success_url
   else
-    log object, type: 'ERROR: payments_example_gateway webhook'
-
     redirect_to context.params.failed_url
   endif
 %}
